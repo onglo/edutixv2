@@ -1,13 +1,13 @@
+/* ETON BLUE: #96c8a2*/
+
 /* fonts */
-@font-face {
-    font-family: robotoThin;
-    src: url(/fonts/Roboto-Thin.ttf);
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
 /* remove margins */
 body {
     margin: 0px;
 }
+
 
 /* styling for the top bar elements */
 #topBar {
@@ -16,8 +16,20 @@ body {
     height: 50px;
 }
 #topBarTitle {
-    font-family: robotoThin, sans-serif; 
+    font-family: Roboto, sans-serif; 
     color: white;
-    align-content: center;
-    align
+    text-align: center;
+    padding-top: 3px;
+}
+#hamburgerIcon {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 30px;
+    height: 30px;
+    fill: white; 
+}
+/* when the icon is hovered over */
+#hamburgerIcon:hover {
+    fill: #96c8a2;
 }
