@@ -13,13 +13,76 @@
         <!-- the top bar on the page -->
         <div id="topBar">
             
-            <!-- hamburger icon for the menu 
-            <img id="hamburgerIcon" src="assets/hamburger-icon.svg"/>-->
+            <!-- hamburger icon for the menu-->
             <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="hamburgerIcon" width="100%" height="100%" viewBox="0 0 596 596" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><rect x="0" y="0" width="595.276" height="75.874"/><rect x="0" y="259.701" width="595.276" height="75.874"/><rect x="0" y="519.401" width="595.276" height="75.874"/></g></svg>
         
             <!-- title for the page -->
             <h1 id="topBarTitle">What's On?</h1>
         
+        </div>
+        
+        <!-- menu that comes out of the side page -->
+        <div id="menu">
+            
+            <!-- a list of all the options -->
+            
+            <hr class="menuHR">
+            <p class="menuItem">Create New Event</p>
+            <hr class="menuHR">
+
+            <p class="menuItem">My Saved Events</p>
+            <hr class="menuHR">
+
+            <p class="menuItem">My Hosted Events</p>
+            <hr class="menuHR">
+
+            <p class="menuItem">Logout</p>
+            <hr class="menuHR">
+
+        </div>
+        
+        <!-- a date banner -->
+        <div class="dateBanner">
+            
+            <!-- p for the date -->
+            <p class="dateBannerText">Date goes here</p>
+        
+        </div>
+        
+        <!-- an event -->
+        <div class="eventContainer">
+            
+            <!-- a container for the elements as they are not 100% width -->
+            <div class="eventElementsContainer">
+                
+                <!-- title and bookmark container -->
+                <div class="topLineContainer">
+                    
+                    <!-- main title for the event -->
+                    <span class="eventTitle">Event Title</span>
+
+                    <!-- bookmark icon -->
+                    <img class="bookmarkIcon" src="assets/bookmark-icon-empty.svg"/>
+                </div>
+                
+                <!-- host label -->
+                <p class="eventHost"><i>By: Event host name</i></p>
+
+                <!-- a p for the location marker and label -->
+                <p class="locationLabel">
+
+                    <!-- location marker -->
+                    <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="locationMarkerIcon" width="100%" height="100%" viewBox="0 0 596 596" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><path d="M310.49,567.486l15.085,-289.325l-278.957,-78.228l532.16,-103.551l-268.288,471.104Z" style="fill:#96c8a2;"/><path d="M280.37,537.365l15.085,-289.325l-278.957,-78.227l532.16,-103.552l-268.288,471.104Z"/></g></svg>
+                    <span class="locationLabelInfo">Location - 20:00</span>
+                </p>
+
+                <!-- I will attend button -->
+                <button class="attendButton">I Will Attend</button>
+                
+            </div>
+            
+            <!-- a line at the bottom -->
+            <hr class="eventHR">
         </div>
     
     </body>
