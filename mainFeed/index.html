@@ -6,6 +6,9 @@
         
         <!-- link to the stylesheet -->
         <link rel="stylesheet" href="style.css" type="text/css"/>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -20,25 +23,29 @@
             <h1 id="topBarTitle">What's On?</h1>
         
         </div>
-        
-        <!-- menu that comes out of the side page -->
-        <div id="menu">
+    
+        <!-- a container div for the menu -->
+        <div id="menuContainer" -->
             
-            <!-- a list of all the options -->
-            
-            <hr class="menuHR">
-            <p class="menuItem">Create New Event</p>
-            <hr class="menuHR">
+            <!-- menu that comes out of the side page -->
+            <div id="menu">
 
-            <p class="menuItem">My Saved Events</p>
-            <hr class="menuHR">
+                <!-- a list of all the options -->
 
-            <p class="menuItem">My Hosted Events</p>
-            <hr class="menuHR">
+                <hr class="menuHR">
+                <a href="#" class="menuLink"><p class="menuItem">Create New Event</p></a>
+                <hr class="menuHR">
 
-            <p class="menuItem">Logout</p>
-            <hr class="menuHR">
+                <a href="#" class="menuLink"><p class="menuItem">My Saved Events</p></a>
+                <hr class="menuHR">
 
+                <a href="#" class="menuLink"><p class="menuItem">My Hosted Events</p></a>
+                <hr class="menuHR">
+
+                <a href="#" class="menuLink"><p class="menuItem">Logout</p></a>
+                <hr class="menuHR">
+
+            </div>
         </div>
         
         <!-- a date banner -->
@@ -84,6 +91,43 @@
             <!-- a line at the bottom -->
             <hr class="eventHR">
         </div>
-    
+        
+        <!-- script -->
+        <script type="text/javascript" class="script">
+        
+            // executed when the menu button is pressed 
+            $("#hamburgerIcon").on("click", function() {
+
+                // show the menubar 
+                $("#menu").stop().animate({
+                    left: "250px"
+                }, 400);
+                
+                // slide icon out
+                $("#hamburgerIcon").stop().animate({
+                    left: "-40px"
+                }, 400);
+                
+                // when the mouse is removed from the menubar it dissapears 
+                $("#menu").mouseleave(function() {
+                   
+                    // hide the menubar
+                    $("#menu").stop().animate({
+                        left: "-250px"
+                    },400);
+                    
+                    // slide icon in
+                    $("#hamburgerIcon").stop().animate({
+                        left: "0px"
+                    }, 400);
+                    
+                });
+
+            });
+
+            // remove JS
+            $(".script").innerHTML = "";
+            
+        </script>
     </body>
 </body>
