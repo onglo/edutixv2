@@ -1,8 +1,8 @@
-<body>
-    
+<html>
+
     <head>
         <!-- A title for the page -->
-        <title>Edutix | What's On?</title>
+        <title>Edutix | Create New Event</title>
         
         <!-- icon -->
         <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
@@ -13,7 +13,7 @@
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
-
+    
     <body>
     
         <!-- the top bar on the page -->
@@ -23,7 +23,7 @@
             <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="hamburgerIcon" width="100%" height="100%" viewBox="0 0 596 596" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><rect x="0" y="0" width="595.276" height="75.874"/><rect x="0" y="259.701" width="595.276" height="75.874"/><rect x="0" y="519.401" width="595.276" height="75.874"/></g></svg>
         
             <!-- title for the page -->
-            <h1 id="topBarTitle">What's On?</h1>
+            <h1 id="topBarTitle">Create New Event</h1>
         
         </div>
     
@@ -36,7 +36,7 @@
                 <!-- a list of all the options -->
 
                 <hr class="menuHR">
-                <a href="../createNewEvent" class="menuLink"><p class="menuItem">Create New Event</p></a>
+                <a href="../mainFeed" class="menuLink"><p class="menuItem">What's On?</p></a>
                 <hr class="menuHR">
 
                 <a href="#" class="menuLink"><p class="menuItem">My Saved Events</p></a>
@@ -51,48 +51,63 @@
             </div>
         </div>
         
-        <!-- a date banner -->
-        <div class="dateBanner">
+        <!-- a conatiner for all of the input fields -->
+        <div id="inputContainer">
+        
+            <!-- a form that will have all of the items -->
+            <form id="inputForm">
+                
+                <!-- a div for title input -->
+                <div id="titleInputContainer" class="form-group-container">
+                    
+                    <!-- an input and label for the name of the event -->
+                    <label for="titleInput" class="inputLabel">What is the name of your event?</label>
+                    <input type="text" class="formInput" id="titleInput" placeholder="Enter name here">
+                </div>
+                
+                <!-- a div for desc input -->
+                <div id="descInputContainer" class="form-group-container">
+                    
+                    <!-- an input and textarea for the desc -->
+                    <label for="descTextArea" class="inputLabel">Write a short description of your event</label>
+                    <textarea class="formInput" id="descTextArea" placeholder="Enter description here"></textarea>
+                </div>
+                
+                <!-- a div for date input conatiner -->
+                <div id="dateInputContainer" class="form-group-container">
+                    
+                    <!-- an input and date picker for the date -->
+                    <label for="dateInput" class="inputLabel">When is your event?</label>
+                    <input type="datetime" id="dateInput" class="formInput" placeholder="Enter date here">
+                </div>
+                
+                <!-- a div for the location container -->
+                <div id="locationInputConatiner" class="form-group-container">
+                
+                    <!-- an input and label for the location -->
+                    <label for="locationInput" class="inputLabel">Where is your event located?</label>
+                    <input type="text" id="inputLabel" class="formInput" placeholder="Enter location here">
+                    
+                </div>
+                
+                <!-- a div for the event host container -->
+                <div id="eventHostInputContainer" class="form-group-container">
+
+                    <!-- an input and label for event host -->
+                    <label for="eventHostInput" class="inputLabel">Which society is hosting this event?</label>
+                    <input type="text" id="eventHostInput" class="formInput" placeholder="Enter name here">
+                </div>
             
-            <!-- p for the date -->
-            <p class="dateBannerText">Date goes here</p>
+            </form>
         
         </div>
         
-        <!-- an event -->
-        <div class="eventContainer">
+        <!-- a sticky footer for the page -->
+        <div id="footer">
+        
+            <!-- a publish event button -->
+            <button id="publishEvent">Publish Event</button>
             
-            <!-- a container for the elements as they are not 100% width -->
-            <div class="eventElementsContainer">
-                
-                <!-- title and bookmark container -->
-                <div class="topLineContainer">
-                    
-                    <!-- main title for the event -->
-                    <span class="eventTitle">Event Title</span>
-
-                    <!-- bookmark icon -->
-                    <img class="bookmarkIcon" src="/assets/bookmark-icon-empty.svg"/>
-                </div>
-                
-                <!-- host label -->
-                <p class="eventHost"><i>By: Event host name</i></p>
-
-                <!-- a p for the location marker and label -->
-                <p class="locationLabel">
-
-                    <!-- location marker -->
-                    <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="locationMarkerIcon" width="100%" height="100%" viewBox="0 0 596 596" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><path d="M310.49,567.486l15.085,-289.325l-278.957,-78.228l532.16,-103.551l-268.288,471.104Z" style="fill:#96c8a2;"/><path d="M280.37,537.365l15.085,-289.325l-278.957,-78.227l532.16,-103.552l-268.288,471.104Z"/></g></svg>
-                    <span class="locationLabelInfo">Location - 20:00</span>
-                </p>
-
-                <!-- I will attend button -->
-                <button class="attendButton">I Will Attend</button>
-                
-            </div>
-            
-            <!-- a line at the bottom -->
-            <hr class="eventHR">
         </div>
         
         <!-- script -->
@@ -132,5 +147,6 @@
             $(".script").innerHTML = "";
             
         </script>
+    
     </body>
-</body>
+</html>

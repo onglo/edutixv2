@@ -1,0 +1,173 @@
+/* ETON BLUE: #96c8a2*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+/* remove margins */
+body {
+    margin: 0px;
+}
+
+
+/* styling for the top bar elements */
+#topBar {
+    background-color: black;
+    width: 100%;
+    height: 50px;
+}
+#topBarTitle {
+    font-family: Roboto, sans-serif;      
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    padding-top: 3px;
+    margin: 0px;
+}
+#hamburgerIcon {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 30px;
+    height: 30px;
+    fill: white; 
+}
+/* when the icon is hovered over */
+#hamburgerIcon:hover {
+    fill: #96c8a2;
+}
+
+/* styling for the menu */
+#menu {
+    height: -webkit-calc(100% - 60px);
+    height: -moz-calc(100% - 60px);
+    height: calc(100% - 60px);
+    width: 250px;
+    background-color: black;
+    padding-top: 10px;
+    position: absolute;
+    z-index: 1000;
+    margin-left: -250px;
+}
+.menuItem {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.menuItem:hover {
+    color: #96c8a2;
+}
+.menuHR {
+    border: solid 1px white; 
+}
+.menuLink {
+    text-decoration: none;
+}
+
+/* styling for the input form */
+#inputContainer {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px black;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+#inputForm {
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group-container {
+    margin-bottom: 30px;
+}
+
+.inputLabel {
+    font-family: Roboto, sans-serif;
+    font-size: 25px;
+    display: block;
+}
+
+.formInput {
+    display: block;
+    width: 100%;
+    border: solid 1px black;
+    height: 40px;
+    margin-top: 10px;
+    outline: none;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+}
+
+#descTextArea {
+    height: 80px !important;
+    resize: none;
+}
+
+/* placeholder styling */
+.formInput::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #909090;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+}
+.formInput:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909090;
+   opacity:  1;
+   font-family: Roboto, sans-serif;
+   font-size: 20px;
+}
+.formInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909090;
+   opacity:  1;
+   font-family: Roboto, sans-serif;
+   font-size: 20px;
+}
+.formInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #909090;
+   font-family: Roboto, sans-serif;
+   font-size: 20px;
+}
+.formInput::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #909090;
+   font-family: Roboto, sans-serif;
+   font-size: 20px;
+}
+
+/* styling for publish button */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    height: 60px;
+}
+#publishEvent {
+    font-size: 20px;
+    color: #3AD282; 
+    font-family: Roboto, sans-serif;
+    width: 95%;
+    background-color: white;
+    height: 35px;
+    border: 2px solid #3AD282;
+    border-radius: 10px;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 14px;
+}
+#publishEvent:hover {
+    color: white; 
+    background-color: #3AD282;
+}
+
+
+
+
+
+
+
+
+
