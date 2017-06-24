@@ -12,6 +12,8 @@
         
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.min.css"/ >
+        <script src="jquery.datetimepicker.full.min.js"></script>
     </head>
     
     <body>
@@ -78,7 +80,7 @@
                     
                     <!-- an input and date picker for the date -->
                     <label for="dateInput" class="inputLabel">When is your event?</label>
-                    <input type="datetime" id="dateInput" class="formInput" placeholder="Enter date here">
+                    <input type="text" id="dateInput" class="formInput" placeholder="Enter date here (mm/dd/yyyy hh:mm)">
                 </div>
                 
                 <!-- a div for the location container -->
@@ -141,6 +143,18 @@
                     
                 });
 
+            });
+            
+            // init datetime picker 
+            $("#dateInput").datetimepicker();
+            
+            // date and time picker 
+            $('#dateInput').datetimepicker({
+                  format:'d/m/Y H:i',
+                allowTimes:[
+                  '12:00','13:00','14:00','15:00','16:00','17:00','18:00','18:30','19:00','20:00','20:45','21:00'
+                 ],
+                minDate: '0',
             });
 
             // remove JS

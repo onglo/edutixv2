@@ -98,14 +98,14 @@ body {
     font-weight: 300;
     text-shadow: 1px 1px #96c8a2;
 }
-.bookmarkIcon {
+.alertIcon {
     padding-top: 10px;
     float: right;
     width: 40px;
     height: 40px;
 }
-.bookmarkIcon:hover {
-    content:url("assets/bookmark-icon-full.svg");
+.alertIcon:hover {
+    content:url("bell-icon-active.svg");
 }
 .eventHost {
     margin-top: 10px;
