@@ -115,8 +115,9 @@ body {
     display: table-cell;
 }
 .alertIcon:hover {
-    content:url("bell-icon-active.svg");
+    background:url("bell-icon-active.svg");
 }
+
 .eventHost {
     margin-top: 10px;
     font-size: 18px;
@@ -198,7 +199,7 @@ body {
     height: 40px;
 }
 #popupAlertIcon:hover {
-    content:url("bell-icon-popup-active.svg");
+    background:url("bell-icon-popup-active.svg");
 }
 #popupBellIconContainer {
     width: 5%;
