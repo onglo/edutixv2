@@ -15,6 +15,39 @@
     </head>
 
     <body>
+        
+        <!-- the popup div  !OVERFLOW FOR BODY NEEDS TO BE HIDDEN WHILE POPUP IS ACTIVE-->
+        <div id="fadeContainer">
+            <div id="popupContainer">
+
+                <!-- container needed for vertical alignment -->
+                <div id="verticalAlignmentContainer">
+
+                    <!-- the popup itself -->
+                    <div id="popupMain">
+
+                        <!-- top section of the popup -->
+                        <div id="popupTopSection">
+
+                            <!-- place in the bell icon for reminders -->
+                            <div id="popupBellIconContainer">
+                                <img src="bell-icon-popup-inactive.svg" id="popupAlertIcon">
+                            </div>
+
+                            <!-- place in the title -->
+                            <div id="popupTitleContainer">
+                                <p id="popupEventTitle">Event title</p>
+                            </div>
+
+                            <!-- the X icon -->
+                            <div id="popupQuitIconContainer">
+                                <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="popupQuitIcon" width="100%" height="100%" viewBox="0 0 71 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.5;"><g><path d="M13.573,0l-13.573,13.559l57.247,57.307l13.573,-13.558l-57.247,-57.308Z" style="stroke:#000;stroke-width:0.23px;"/><path d="M57.247,0l13.573,13.559l-57.247,57.307l-13.573,-13.558l57.247,-57.308Z" style="stroke:#000;stroke-width:0.23px;"/></g></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     
         <!-- the top bar on the page -->
         <div id="topBar">
@@ -126,6 +159,22 @@
                     
                 });
 
+            });
+            
+            // executed when an event is pressed
+            $(".eventContainer").on("click", function() {
+               
+                // trigger the popup
+                $("#fadeContainer").fadeIn(400);
+                
+            });
+            
+            // executed when cross is pressed 
+            $("#popupQuitIconContainer").on("click", function() {
+               
+                // hide the popup 
+                $("#fadeContainer").fadeOut(400);
+                
             });
 
             // remove JS
