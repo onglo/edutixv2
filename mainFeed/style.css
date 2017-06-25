@@ -193,6 +193,7 @@ body {
 #popupBellIconContainer {
     width: 5%;
     display: table-cell;
+    vertical-align: top;
 }
 #popupQuitIcon {
     width: 40px;
@@ -204,12 +205,12 @@ body {
 #popupQuitIconContainer {
     width: 5%;
     display: table-cell;
+    vertical-align: top;
 }
 
 #popupTitleContainer {
     display: table-cell;
     width: 90%;
-    vertical-align: top;
 }
 #popupEventTitle {
     font-size: 30px;
@@ -218,6 +219,11 @@ body {
     font-weight: 300;
     text-shadow: 1px 1px #96c8a2;
 }
+@-moz-document url-prefix() {
+    #popupEventTitle {
+        line-height: 0;
+    }
+}
 #popupTopSection {
     text-align: center;
     display: table;
@@ -225,6 +231,7 @@ body {
     margin-left: 1%;
     margin-right: 1%;
     width: 98%;
+    vertical-align: top;
 }
 
 
