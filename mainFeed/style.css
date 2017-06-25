@@ -90,6 +90,8 @@ body {
 }
 .topLineContainer {
     width: 100%;
+    display: table;
+    vertical-align: top;
 }
 .eventTitle {
     font-size: 30px;
@@ -97,12 +99,20 @@ body {
     font-family: Roboto, sans-serif;      
     font-weight: 300;
     text-shadow: 1px 1px #96c8a2;
+    display: block;
+}
+.titleContainer {
+    display: table-cell;
 }
 .alertIcon {
-    padding-top: 10px;
     float: right;
     width: 40px;
     height: 40px;
+    position: relative;
+    top: 5px;
+}
+.alertIconContainer {
+    display: table-cell;
 }
 .alertIcon:hover {
     content:url("bell-icon-active.svg");

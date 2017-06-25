@@ -102,14 +102,18 @@
                 <div class="topLineContainer">
                     
                     <!-- main title for the event -->
-                    <span class="eventTitle">Event Title</span>
+                    <div class="titleContainer">
+                        <span class="eventTitle">Event Title</span>
+                    </div>    
 
-                    <!-- bookmark icon -->
-                    <img class="alertIcon" src="bell-icon-inactive.svg"/>
+                    <!-- alert icon -->
+                    <div class="alertIconContainer">
+                        <img class="alertIcon" src="bell-icon-inactive.svg"/>
+                    </div>
                 </div>
                 
                 <!-- host label -->
-                <p class="eventHost"><i>By: Event host name</i></p>
+                <p class="eventHost"><i>By: Event host</i></p>
 
                 <!-- a p for the location marker and label -->
                 <p class="locationLabel">
@@ -162,15 +166,17 @@
             });
             
             // executed when an event is pressed
-            $(".eventContainer").on("click", function() {
-               
+            $(".eventContainer").on("click", function(e) {
+                
+                // check alert or attending button not pressed
+                if ($(e.target).is(".attendButton") || $(e.target).is(".alertIcon")) return; 
                 // trigger the popup
                 $("#fadeContainer").fadeIn(400);
                 
             });
             
             // executed when cross is pressed 
-            $("#popupQuitIconContainer").on("click", function() {
+            $("#popupQuitIconContainer").on("click", function(e) {
                
                 // hide the popup 
                 $("#fadeContainer").fadeOut(400);
