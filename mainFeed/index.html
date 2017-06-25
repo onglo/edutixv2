@@ -59,6 +59,23 @@
                         
                         <!-- middle section of the popup -->
                         <div id="popupMiddleSection">
+                            
+                            <!-- a container for horizontal aligment -->
+                            <div id="popupMiddleAligment">
+                            
+                                <!-- a paragraph for the description -->
+                                <div id="popupDescriptionContainer">
+                                    <p id="popupDescriptionLabel">
+                                        - Drones that deliver your orders, computers that talk to you, and other crazy ideas.  A rare peek behind the curtain at Amazon's R&D and a discussion on the emerging technologies that will shape our world<br><br>- From Amazon's Advanced Products and Technologies division, Joshua Edwards leads the team responsible for incubating early-stage product concepts and emerging technologies.  Before Amazon, Mr Edwards worked on Xbox and at Microsoft Research. <br><br>- Formal Change/ All Blocks Welcome<br><br>- Drones that deliver your orders, computers that talk to you, and other crazy ideas.  A rare peek behind the curtain at Amazon's R&D and a discussion on the emerging technologies that will shape our world<br><br>- From Amazon's Advanced Products and Technologies division, Joshua Edwards leads the team responsible for incubating early-stage product concepts and emerging technologies.  Before Amazon, Mr Edwards worked on Xbox and at Microsoft Research. <br><br>- Formal Change/ All Blocks Welcome<br><br>- Drones that deliver your orders, computers that talk to you, and other crazy ideas.  A rare peek behind the curtain at Amazon's R&D and a discussion on the emerging technologies that will shape our world<br><br>- From Amazon's Advanced Products and Technologies division, Joshua Edwards leads the team responsible for incubating early-stage product concepts and emerging technologies.  Before Amazon, Mr Edwards worked on Xbox and at Microsoft Research. <br><br>- Formal Change/ All Blocks Welcome
+                                    </p>
+                                </div>
+                                
+                                <!-- the poster -->
+                                <div id="posterContainer">
+                                    <img src="event-poster.png" id="poster">
+                                </div>
+                            
+                            </div>
                         
                         </div>
                         
@@ -70,7 +87,7 @@
                         
                                 <!-- a container for the event host label -->
                                 <div id="popupEventHostContainer">
-                                    <p id="popupEventHostLabel">By: Computer Science Society</p>
+                                    <span id="popupEventHostLabel"><i>By: Computer Science Society</i></span>
                                 </div>
                             
                                 <!-- a container for the location info -->
@@ -82,7 +99,10 @@
                             
                             </div>
                             
-                            <button id="popupAttendButton">I Will Attend</button>
+                            <!-- button to attend -->
+                            <div id="popupAttendButtonContainer">
+                                <button id="popupAttendButton">I Will Attend</button>
+                            </div>
                         
                         </div>
                         
@@ -176,6 +196,36 @@
         
         <!-- script -->
         <script type="text/javascript" class="script">
+            
+            // popup resize 
+            function resizePopup() {
+                
+                // check if popup is visible
+                if ($("#fadeContainer").css("display") == "none") {
+                    return;
+                }
+                
+                // get size of topbar 
+                var topBarSize = parseInt($("#popupTopSection").css("height"));
+
+                // get size of bottom bar 
+                var bottomBarSize = parseInt($("#popupBottomSection").css("height"));
+                
+                // get size of popup 
+                var popupTotalSize = parseInt($("#popupMain").css("height"));
+
+                // calc size of middle
+                var middleArea = popupTotalSize - (topBarSize + bottomBarSize + 20);
+                
+                // resize middle 
+                $("#popupMiddleSection").css("height", middleArea);
+                $("#popupMiddleAligment").css("height", middleArea);
+                $("#poster").css("height", middleArea);
+                $("#popupDescriptionLabel").css("height", middleArea);
+            }
+            
+            window.onload = resizePopup();
+            window.onresize = resizePopup;
         
             // executed when the menu button is pressed 
             $("#hamburgerIcon").on("click", function() {
@@ -214,6 +264,7 @@
                 if ($(e.target).is(".attendButton") || $(e.target).is(".alertIcon")) return; 
                 // trigger the popup
                 $("#fadeContainer").fadeIn(400);
+                resizePopup();
                 
             });
             
@@ -223,6 +274,17 @@
                 // hide the popup 
                 $("#fadeContainer").fadeOut(400);
                 
+            });
+            
+            // executed when fade container is pressed 
+            $("#fadeContainer").on("click", function(e) {
+                
+                // check fade container was pressed (not event block)
+                if ($(e.target).is("#verticalAlignmentContainer")) {
+                    // hide the popup 
+                    $("#fadeContainer").fadeOut(400);
+                }
+
             });
 
             // remove JS

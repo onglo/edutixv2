@@ -163,10 +163,10 @@ body {
     background-color: #E7E7E7;
 }
 
-/* styling for the popup 
+/* styling for the popup */
 #fadeContainer {
     display: none;
-}*/
+}
 #popupContainer {
 
     filter: alpha(opacity=80); /* For IE8 and earlier */
@@ -246,6 +246,7 @@ body {
     bottom: 0;
     width: 100%;
     padding-bottom: 10px;
+    background-color: white;
 }
 #popupInfoLineContainer {
     display: table;
@@ -310,8 +311,31 @@ body {
     color: white; 
     background-color: #3AD282;
 }
-
-
+#popupMiddleAligment {
+    display: table;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#popupDescriptionContainer {
+    display: table-cell;
+    vertical-align: top;
+}
+#popupDescriptionLabel {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    overflow-y: scroll;
+    height: 1px;
+}
+#posterContainer {
+    display: table-cell;
+    vertical-align: top;
+}
+#poster {
+    float: right;
+    width: auto;
+    height: 1px;
+}
 
 
 
