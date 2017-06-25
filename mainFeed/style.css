@@ -163,10 +163,10 @@ body {
     background-color: #E7E7E7;
 }
 
-/* styling for the popup */
+/* styling for the popup 
 #fadeContainer {
     display: none;
-}
+}*/
 #popupContainer {
 
     filter: alpha(opacity=80); /* For IE8 and earlier */
@@ -193,6 +193,7 @@ body {
     border: 2px solid black;
     background-color: rgba(255, 255, 255, 1);
     z-index: 2000;
+    position: relative;
 }
 #popupAlertIcon {
     width: 40px;
@@ -229,11 +230,7 @@ body {
     font-family: Roboto, sans-serif;      
     font-weight: 300;
     text-shadow: 1px 1px #96c8a2;
-}
-@-moz-document url-prefix() {
-    #popupEventTitle {
-        line-height: 0;
-    }
+    margin-top: -1px;
 }
 #popupTopSection {
     text-align: center;
@@ -244,8 +241,75 @@ body {
     width: 98%;
     vertical-align: top;
 }
+#popupBottomSection {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+}
+#popupInfoLineContainer {
+    display: table;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#popupEventHostContainer {
+    width: 50%;
+    display: table-cell;
+    vertical-align: top;
+}
+#popupEventHostLabel {
+    margin-top: 10px;
+    font-size: 20px;
+    color: black; 
+    font-family: Roboto, sans-serif;      
+    font-weight: 300;
+    text-shadow: 1px 1px #96c8a2;
+    vertical-align: top;
+}
+#popupLocationContainerIcon {
+    width: 10%;
+    display: table-cell;
+}
+#popupLocationIcon {
+    width: 30px;
+    height: 30px;
 
-
+}
+#popupLocationInfoContainer {
+    width: 40%;
+    display: table-cell;
+    text-align: right;
+}
+#popupLocationLabel {
+    font-size: 20px;
+    color: black; 
+    font-family: Roboto, sans-serif;      
+    font-weight: 300;
+    text-shadow: 1px 1px #96c8a2;
+    vertical-align: top;
+}
+#popupAttendButtonContainer {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+#popupAttendButton {
+    width: 100%;
+    font-size: 20px;
+    color: #3AD282; 
+    font-family: Roboto, sans-serif;
+    background-color: white;
+    height: 35px;
+    border: 2px solid #3AD282;
+    border-radius: 10px;
+    outline: none;
+}
+#popupAttendButton:hover {
+    color: white; 
+    background-color: #3AD282;
+}
 
 
 
