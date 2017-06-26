@@ -14,6 +14,9 @@
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
+        <!-- responsive -->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        
         <!--[if IE]>
           <style>
             .alertIcon:hover {
@@ -146,6 +149,9 @@
             </div>
         </div>
         
+        <!-- whitespace between the menu and rest of content -->
+        <div id="whiteSpace"></div>
+        
         <!-- a date banner -->
         <div class="dateBanner">
             
@@ -196,7 +202,7 @@
         
         <!-- script -->
         <script type="text/javascript" class="script">
-            
+
             // popup resize 
             function resizePopup() {
                 
@@ -204,6 +210,9 @@
                 if ($("#fadeContainer").css("display") == "none") {
                     return;
                 }
+                
+                // get the width of popup
+                var width = parseInt($("#popupMiddleSection").css("width"));
                 
                 // get size of topbar 
                 var topBarSize = parseInt($("#popupTopSection").css("height"));
@@ -217,15 +226,28 @@
                 // calc size of middle
                 var middleArea = popupTotalSize - (topBarSize + bottomBarSize + 20);
                 
+                // check if poster is going to be too wide 
+                if (middleArea > (width * 0.5)) {
+                    var posterHeight = width * 0.5;
+                }
+                else {
+                    var posterHeight = middleArea;
+                }
+                
                 // resize middle 
                 $("#popupMiddleSection").css("height", middleArea);
                 $("#popupMiddleAligment").css("height", middleArea);
-                $("#poster").css("height", middleArea);
+                $("#poster").css("height", posterHeight);
                 $("#popupDescriptionLabel").css("height", middleArea);
             }
             
             window.onload = resizePopup();
             window.onresize = resizePopup;
+            
+            // reisize popup on orientation change
+            window.addEventListener("orientationchange", function() {
+                resizePopup().delay(400);
+            }, false);
         
             // executed when the menu button is pressed 
             $("#hamburgerIcon").on("click", function() {

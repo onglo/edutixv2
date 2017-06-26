@@ -14,6 +14,9 @@ body {
     background-color: black;
     width: 100%;
     height: 50px;
+    position: fixed;
+    top: 0;
+    z-index: -10;
 }
 #topBarTitle {
     font-family: Roboto, sans-serif;      
@@ -63,6 +66,11 @@ body {
 .menuLink {
     text-decoration: none;
 }
+#whiteSpace {
+    height: 50px;
+    width: 100%;
+}
+
 
 /* styling for date banners */
 .dateBanner {
@@ -337,6 +345,12 @@ body {
     height: 1px;
 }
 
+/* responsive queuries */
+@media only screen and (max-width: 768px) {
+ 
+    /* popup, poster below text instead of inline */
+    
+}
 
 
 
