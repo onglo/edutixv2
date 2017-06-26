@@ -348,8 +348,19 @@ body {
 /* responsive queuries */
 @media only screen and (max-width: 768px) {
  
-    /* popup, poster below text instead of inline */
-    
+    /* popup styles */
+    #popupEventHostContainer {
+        width: 100%;
+        display: table-row;
+        text-align: center;
+    }
+    #popupLocationInfoContainer {
+        width: 100%;
+        display: table-row;
+        text-align: center;
+    }
+    #popupInfoLineContainer {
+    }
 }
 
 
