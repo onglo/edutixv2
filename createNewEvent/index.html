@@ -17,15 +17,47 @@
     </head>
     
     <body>
+        
+        <div id="fadeContainer">
+            
+            <!-- help popup -->
+            <div id="helpContainer">
+            
+                <!-- container for vertical aligment -->
+                <div id="helpVerticalContainer">
+                    
+                    <!-- the main help popup -->
+                    <div id="mainHelpPopup">
+        
+                        <!-- title help label -->
+                        <h1 id="helpTitle">Welcome to Edutix</h1>
+
+                        <!-- a p giving help -->
+                        <p id="helpContent">- To find out more about an event, click on it and a popup will appear giving you more details and a poster <br><br>- If you want to go to an event, press the 'I Will Attend' button so that we know the numbers for an event and can send you reminders to make sure you don't forget about it <br><br>- If you aren't sure whether you want to go to an event but want to receive notifications about it,  simply press the bell icon <br><br>- To see your saved events and more, press the icon on the top right of the screen to bring out the menu <br><br>- To see this message again, simply press 'Help' at the bottom of the menu</p>
+                        
+                        <!-- popup bototm section -->
+                        <div id="helpBottomSection">
+                            
+                            <!-- done button -->
+                            <button id="helpClose">Done!</button>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     
         <!-- the top bar on the page -->
         <div id="topBar">
             
             <!-- hamburger icon for the menu-->
             <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="hamburgerIcon" width="100%" height="100%" viewBox="0 0 596 596" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><rect x="0" y="0" width="595.276" height="75.874"/><rect x="0" y="259.701" width="595.276" height="75.874"/><rect x="0" y="519.401" width="595.276" height="75.874"/></g></svg>
+            
+            <!-- back arrow for the menu -->
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg id="backArrow" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M10.57,13.437l0,1.923l-10.57,-3.36l10.57,-3.36l0,1.923l13.43,0l0,2.874l-13.43,0Z"/></svg>
         
             <!-- title for the page -->
-            <h1 id="topBarTitle">Create New Event</h1>
+            <h1 id="topBarTitle">What's On?</h1>
         
         </div>
     
@@ -38,7 +70,7 @@
                 <!-- a list of all the options -->
 
                 <hr class="menuHR">
-                <a href="../mainFeed" class="menuLink"><p class="menuItem">What's On?</p></a>
+                <a href="../createNewEvent" class="menuLink"><p class="menuItem">Create New Event</p></a>
                 <hr class="menuHR">
 
                 <a href="#" class="menuLink"><p class="menuItem">My Saved Events</p></a>
@@ -49,10 +81,14 @@
 
                 <a href="#" class="menuLink"><p class="menuItem">Logout</p></a>
                 <hr class="menuHR">
+                
+                <a class="menuLink" id="helpButton"><p class="menuItem">Help</p></a>
+                <hr class="menuHR">
 
             </div>
         </div>
         
+        <!-- whitespace between the menu and rest of content -->
         <div id="whiteSpace"></div>
         
         <!-- a conatiner for all of the input fields -->
@@ -117,6 +153,67 @@
         <!-- script -->
         <script type="text/javascript" class="script">
         
+            // popup resize 
+            function resizePopup() {
+                // check if popup is visible
+                if ($("#popupContainer").css("display") == "none") {
+                    
+                    // check if help is visible 
+                    if ($("#helpContainer").css("display") == "none") {
+                        return
+                    }
+                    else {
+
+                        // get height of popup 
+                        var height = parseInt($("#mainHelpPopup").css("height"));
+
+                        // make text box 80%;
+                        $("#helpContent").css("height", height * 0.7);
+
+                        console.log(height);
+                    }
+                    
+                }
+
+                // get the width of popup
+                var width = parseInt($("#popupMiddleSection").css("width"));
+                
+                // get size of topbar 
+                var topBarSize = parseInt($("#popupTopSection").css("height"));
+
+                // get size of bottom bar 
+                var bottomBarSize = parseInt($("#popupBottomSection").css("height"));
+                
+                // get size of popup 
+                var popupTotalSize = parseInt($("#popupMain").css("height"));
+
+                // calc size of middle
+                var middleArea = popupTotalSize - (topBarSize + bottomBarSize + 20);
+                
+                // check if poster is going to be too wide 
+                if (middleArea > (width * 0.5)) {
+                    var posterHeight = width * 0.5;
+                }
+                else {
+                    var posterHeight = middleArea;
+                }
+                
+                // resize middle 
+                $("#popupMiddleSection").css("height", middleArea);
+                $("#popupMiddleAligment").css("height", middleArea);
+                $("#poster").css("height", posterHeight);
+                $("#popupDescriptionLabel").css("height", middleArea);
+            }
+            
+            window.onload = resizePopup();
+            window.onresize = resizePopup;
+            
+            // reisize popup on orientation change
+            window.addEventListener("orientationchange", function() {
+                resizePopup().delay(400);
+            }, false);
+            
+        
             // executed when the menu button is pressed 
             $("#hamburgerIcon").on("click", function() {
 
@@ -125,12 +222,19 @@
                     left: "250px"
                 }, 400);
                 
-                // slide icon out
+                //slide icon out
                 $("#hamburgerIcon").stop().animate({
                     left: "-40px"
                 }, 400);
                 
-                // when the mouse is removed from the menubar it dissapears 
+                // slide arrow in 
+                $("#backArrow").stop().animate({
+                    left: "0px"
+                }, 400);
+                
+                $("hamburgerIcon").attr("src", "back-arrow");
+                
+//              when the mouse is removed from the menubar it dissapears 
                 $("#menu").mouseleave(function() {
                    
                     // hide the menubar
@@ -143,8 +247,86 @@
                         left: "0px"
                     }, 400);
                     
+                    // slide arrow out 
+                    $("#backArrow").stop().animate({
+                        left: "-40px"
+                    }, 400);
+                                    
                 });
+                
+                // when back arrow pressed, menu dissapers
+                $("#backArrow").on("click", function() {
+                   
+                    // hide the menubar
+                    $("#menu").stop().animate({
+                        left: "-250px"
+                    },400);
+                    
+                    // slide icon in
+                    $("#hamburgerIcon").stop().animate({
+                        left: "0px"
+                    }, 400);
+                    
+                    // slide arrow out 
+                    $("#backArrow").stop().animate({
+                        left: "-40px"
+                    }, 400);
+                                    
+                });
+                
+            });
+            
+            // executed when help button is pressed 
+            $("#helpButton").on("click", function() {
+                
+                // hide menu
+                $("#menu").stop().animate({
+                    left: "-250px"
+                },400);
 
+                // slide icon in
+                $("#hamburgerIcon").stop().animate({
+                    left: "0px"
+                }, 400);
+
+                // slide arrow out 
+                $("#backArrow").stop().animate({
+                    left: "-40px"
+                }, 400);
+               
+                // hide alert icon as it messes things up 
+                $(".alertIcon").fadeTo(0, 0.1);
+                
+                // change z index of topbar 
+                $("#topBar").css("z-index", -1);
+                
+                // change z index of footer
+                $("#footer").css("z-index", -1);
+                
+                // trigger the popup
+                $("#helpContainer").css("display", "table");
+                $("#fadeContainer").fadeIn(400);
+                resizePopup();
+                
+                
+            });
+            
+            // executed when help popup close button pressed 
+            $("#helpClose").on("click", function() {
+             
+                // hide the popup 
+                $("#fadeContainer").fadeOut(400);
+                $("#helpContainer").css("display", "none").delay(400);
+
+                // show alert Icon
+                $(".alertIcon").fadeTo(0, 1);
+
+                // change z index of topbar 
+                $("#topBar").css("z-index", 10);
+                
+                // change z index of footer
+                $("#footer").css("z-index", 10);
+                
             });
             
             // init datetime picker 
