@@ -1,0 +1,108 @@
+/* ETON BLUE: #96c8a2*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+/* body styling */
+body {
+    margin: 0px;
+    background-color: #96c8a2;
+}
+
+/* create account div styling */
+#createAccountContainer {
+
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: white;
+    width: 50%;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(153,153,153,1);
+    -moz-box-shadow: 0px 0px 18px 0px rgba(153,153,153,1);
+    box-shadow: 0px 0px 20px 5px rgba(153,153,153,1);
+    padding-top: 10px;
+}
+#createAccountTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+}
+.formInput {
+    width: 90%;
+    border: solid 0px #EDEDED;
+    height: 60px;
+    margin-top: 10px;
+    outline: none;
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+    background-color: #EDEDED;
+    margin-left: -webkit-calc(40% - 35%);
+    margin-left: -moz-calc(40% - 35%);
+    margin-left: calc(40% - 35%);
+    padding-left: 10px;
+}
+/* placeholder styling */
+.formInput::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #818181;
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+}
+.formInput::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #818181;
+   opacity:  1;
+   font-family: Roboto, sans-serif;
+   font-size: 17px;
+}
+.formInput:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #818181;
+   font-family: Roboto, sans-serif;
+   font-size: 17px;
+}
+#createAccountButton {
+    width: 90%;
+    height: 60px;
+    background-color: black;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    margin-left: -webkit-calc(40% - 35%);
+    margin-left: -moz-calc(40% - 35%);
+    margin-left: calc(40% - 35%);
+}
+#createAccountButton:hover {
+    background-color: #3AD282;
+    color: white;
+}
+.infoLabel {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+.infoLink {
+    text-decoration: none;
+    color: #3AD282;
+}
+.infoLink:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
