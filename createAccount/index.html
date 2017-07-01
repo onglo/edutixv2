@@ -12,6 +12,9 @@
         
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- recaptcaha -->
+        <script src='https://www.google.com/recaptcha/api.js'></script>
 
     </head>
     
@@ -36,6 +39,11 @@
             
             <!-- confirm password input -->
             <input id="confirmPasswordInput" class="formInput" type="password" placeholder="Confirm Password">
+            
+            <!-- recaptcha -->
+            <div id="recaptchaContainer">
+                <div class="g-recaptcha" data-sitekey="6Lc38A8UAAAAAI31hcp9EcihJOx-woqf_WFAOhiT"></div>
+            </div>
              
             <!-- create account button -->
             <button id="createAccountButton">Create Account</button>
