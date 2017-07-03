@@ -3,64 +3,70 @@
     <head>
         <!-- A title for the page -->
         <title>Edutix | Create an Account</title>
-        
+
         <!-- icon -->
         <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
-        
+
         <!-- link to the stylesheet -->
         <link rel="stylesheet" href="style.css" type="text/css"/>
-        
+
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
+
         <!-- recaptcaha -->
         <script src='https://www.google.com/recaptcha/api.js'></script>
 
     </head>
-    
+
     <body>
-        
+
         <!-- the create account div -->
         <form id="createAccountContainer">
-            
+
             <h1 id="createAccountTitle">Create an account</h1>
-            
+
             <!-- name input -->
             <input id="nameInput" type="name" placeholder="What is your name?" class="formInput">
-            
+
             <!-- email input -->
             <input id="emailInput" type="email" placeholder="What is your email?" class="formInput">
-            
+
             <!-- confirm email input -->
             <input id="confirmEmailInput" type="email" placeholder="Confirm Email" class="formInput">
 
             <!-- password input -->
             <input id="passwordInput" class="formInput" type="password" placeholder="Please enter a password">
-            
+
             <!-- confirm password input -->
             <input id="confirmPasswordInput" class="formInput" type="password" placeholder="Confirm Password">
-            
+
             <!-- recaptcha -->
             <div id="recaptchaContainer">
                 <div class="g-recaptcha" data-sitekey="6Lc38A8UAAAAAI31hcp9EcihJOx-woqf_WFAOhiT"></div>
             </div>
-             
+
             <!-- create account button -->
             <button id="createAccountButton">Create Account</button>
-            
+
             <!-- don't have account button -->
             <p id="createAccountLabel" class="infoLabel">Already have an account? <a id="createAccountLink" href="#" class="infoLink">Click here login</a></p>
-            
+
 
         </form>
-        
+
         <!-- script -->
         <script type="text/javascript" class="script">
-    
+
+            // executed when the button is pressed
+            $("#createAccountButton").on("click", function() {
+                alert("e");
+
+            })
+
             // remove JS
             $(".script").innerHTML = "";
-            
+
         </script>
-    
+
     </body>
 </html>

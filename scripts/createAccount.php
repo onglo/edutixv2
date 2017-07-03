@@ -7,7 +7,7 @@ require_once("config.php");
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // check if recaptcha is good
-$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptchaSecret."&response=".$_GET["response"]."&remoteip=".$ip);
+$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptchaSecret."&response=".$_POST["response"]."&remoteip=".$ip);
 $response = json_decode($response, true);
 
 // check if it is valid
@@ -28,7 +28,7 @@ if (mysqli_connect_error()) {
 mysqli_set_charset($link, "utf8");
 
 // prepare a query to check if the email is already taken
-$formattedEmail = encryptEmail($_GET["email"], $encryptAlgorithm);
+$formattedEmail = encryptEmail($_POST["email"], $encryptAlgorithm);
 $formattedEmail = dbEscape($link, $formattedEmail);
 $query = "SELECT `email` FROM `users` WHERE `email` = '".$formattedEmail."'";
 
@@ -67,13 +67,13 @@ $salt = bin2hex(random_bytes(30));
 $userIV = bin2hex(random_bytes(8));
 
 // encrypt the private key
-$encryptedPrivateKey = encryptPrivateKey($privateKey, $_GET["password"], $salt, $encryptAlgorithm, $userIV);
+$encryptedPrivateKey = encryptPrivateKey($privateKey, $_POST["password"], $salt, $encryptAlgorithm, $userIV);
 
 // encrypt the password
-$encryptedPassword = encryptPasswords($_GET["password"]);
+$encryptedPassword = encryptPasswords($_POST["password"]);
 
 // encrypt the name
-$encryptedName = encryptName($_GET["name"], $publicKey, $salt);
+$encryptedName = encryptName($_POST["name"], $publicKey, $salt);
 
 // get an email confirmation link
 $emailLink = emailConfirmationURL();
