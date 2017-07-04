@@ -13,6 +13,7 @@ $response = json_decode($response, true);
 // check if it is valid
 if (intval($response["success"]) !== 1) {
     // invalid
+    mysqli_close($link);
     die("recaptcha");
 }
 
@@ -21,6 +22,7 @@ $link = mysqli_connect($dbHost, $dbUserName, $dbPassword, $etonDatabase);
 
 // check if there was an error
 if (mysqli_connect_error()) {
+    mysqli_close($link);
     die("Error connecting to database");
 }
 
@@ -42,6 +44,7 @@ if($result = mysqli_query($link, $query)) {
     if(!empty($data)) {
 
         // means email is takne, kill script
+        mysqli_close($link);
         die("emailtaken");
     }
 }
@@ -96,8 +99,11 @@ if (mysqli_query($link, $query)) {
     echo "sucess";
 
     // send the email
+    mysqli_close($link);
+    die();
 }
 else {
+    mysqli_close($link);
     die("error connecting to database!");
 }
 ?>

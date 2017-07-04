@@ -29,6 +29,25 @@ body {
     font-family: Roboto, sans-serif;
     text-align: center;
 }
+#alertDiv{
+    width: 95%;
+    margin-top: 10px;
+    outline: none;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-size: 17px;
+    background-color: #ff5656;
+    margin-left: -webkit-calc(40% - 35%);
+    margin-left: -moz-calc(40% - 35%);
+    margin-left: calc(40% - 38%);
+    padding-left: 10px;
+    display: none;
+
+}
+#errorMessage {
+    color: white;
+    font-weight: 300;
+}
 .formInput {
     width: 90%;
     border: solid 0px #EDEDED;
@@ -94,17 +113,3 @@ body {
     margin: 0 auto;
     margin-top: 10px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

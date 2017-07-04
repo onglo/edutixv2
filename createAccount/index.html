@@ -25,8 +25,16 @@
 
             <h1 id="createAccountTitle">Create an account</h1>
 
+            <!-- an alert div that will show if the form is incorrect -->
+            <div id="alertDiv">
+
+                <!-- text -->
+                <p id="errorMessage"><i>Oops!</i> - <span id="errorHolder"></span></p>
+
+            </div>
+
             <!-- name input -->
-            <input id="nameInput" type="name" placeholder="What is your name?" class="formInput">
+            <input id="nameInput" type="text" placeholder="What is your name?" class="formInput">
 
             <!-- email input -->
             <input id="emailInput" type="email" placeholder="What is your email?" class="formInput">
@@ -46,10 +54,10 @@
             </div>
 
             <!-- create account button -->
-            <button id="createAccountButton">Create Account</button>
+            <button id="createAccountButton" type="submit" method="post">Create Account</button>
 
             <!-- don't have account button -->
-            <p id="createAccountLabel" class="infoLabel">Already have an account? <a id="createAccountLink" href="#" class="infoLink">Click here login</a></p>
+            <p id="createAccountLabel" class="infoLabel">Already have an account? <a id="createAccountLink" href="/edutixv2/" class="infoLink">Click here to login</a></p>
 
 
         </form>
@@ -57,11 +65,194 @@
         <!-- script -->
         <script type="text/javascript" class="script">
 
-            // executed when the button is pressed
-            $("#createAccountButton").on("click", function() {
-                alert("e");
+            // list of all of the inputs that we need to check
+            var inputsToCheck = ["nameInput", "emailInput", "confirmEmailInput", "passwordInput", "confirmPasswordInput"];
 
+            // prevent form reloading page
+            $("#createAccountContainer").submit(function() {
+                return false;
             })
+
+            // executed when the submit button is pressed
+            $("#createAccountButton").on("click", function() {
+
+                // check if any of the imputs are empty
+                var empty = false;
+                for (var value = 0; value < inputsToCheck.length; value++) {
+
+                    // get val of input
+                    var targetValue = $("#" + inputsToCheck[value]).val();
+
+                    // check if this is null
+                    if (targetValue === "") {
+                        empty = true;
+                        break;
+                    }
+                }
+
+                // check if any of the fields are empty
+                if (empty) {
+                    // update the alert div
+                    $("#errorHolder").text("One or more of the fields are empty");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                };
+
+                // check that a valid email was used
+                var regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                if (!regex.test($("#emailInput").val())) {
+                    // update the alert div
+                    $("#errorHolder").text("The email address you have entered is invalid");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                }
+
+                // check if the emails match
+                if ($("#emailInput").val() !== $("#confirmEmailInput").val()) {
+
+                    // update the alert div
+                    $("#errorHolder").text("Your emails do not match");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                }
+
+                // check if the passwords match
+                if ($("#passwordInput").val() !== $("#confirmPasswordInput").val()) {
+
+                    // update the alert div
+                    $("#errorHolder").text("Your passwords do not match");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                }
+
+                // check if the password is long enough
+                if ($("#passwordInput").val().length < 6) {
+
+                    // update the alert div
+                    $("#errorHolder").text("Your password needs to be at least 6 characters long");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                }
+
+                // check if recaptcha is submitted
+                var response = grecaptcha.getResponse();
+                if (response.length == 0) {
+                    // update the alert div
+                    $("#errorHolder").text("You need to prove you are not a robot");
+
+                    // show the alert div
+                    $("#alertDiv").css("display", "inherit");
+
+                    // break out
+                    return;
+                }
+
+                // prepare all the data we need
+                var name = $("#nameInput").val();
+                var email = $("#emailInput").val();
+                var password = $("#passwordInput");
+                var response = grecaptcha.getResponse();
+
+                // attempt to register the user via AJAX
+                $.ajax({
+
+                    type: "POST",
+                    url: "/edutixv2/scripts/createAccount.php",
+                    data: "email="+email+"&name="+name+"&password="+password+"&response="+response,
+                    // function that executes before the data is sent
+                    beforeSend: function() {
+                        // change the create account button to loading
+                        $("#createAccountButton").text("Loading...");
+                        $("#createAccountButton").css("background-color", "#3AD282");
+
+                        // hide the error div if it is still there
+                        $("#alertDiv").css("display", "none");
+                    },
+                    // function that executes when the query returns
+                    success: function(result) {
+
+                        // check if the query was successful
+                        if(result == "sucess") {
+                            // hide the submit button
+                            $("#createAccountButton").hide();
+
+                            // update the error div
+                            $("#errorMessage").text("Account successfully created! Please check your email to confirm your account before signing in");
+
+                            // show the alert div
+                            $("#alertDiv").css("background-color", "#3AD282");
+                            $("#alertDiv").css("display", "inherit");
+                        }
+                        // check if the email was taken
+                        else if (result == "emailtaken") {
+                            // update the error div
+                            $("#errorHolder").text("Looks like this email is already registered to an account");
+
+                            // show the alert div
+                            $("#alertDiv").css("display", "inherit");
+
+                            // reset the button
+                            $("#createAccountButton").text("Create Account");
+                            $("#createAccountButton").css("background-color", "black");
+
+                            // reset recaptcha
+                            grecaptcha.reset();
+
+                        }
+                        // check if recaptcha failed
+                        else if (result == "recaptcha") {
+                            // update the error div
+                            $("#errorHolder").text("Recaptcha failed");
+
+                            // show the alert div
+                            $("#alertDiv").css("display", "inherit");
+
+                            // reset the button
+                            $("#createAccountButton").text("Create Account");
+                            $("#createAccountButton").css("background-color", "black");
+
+                            // reset recaptcha
+                            grecaptcha.reset();
+                        }
+                        // else general error
+                        else {
+                            // update the error div
+                            $("#errorHolder").text("There was an error, please try again later");
+
+                            // show the alert div
+                            $("#alertDiv").css("display", "inherit");
+
+                            // reset the button
+                            $("#createAccountButton").text("Create Account");
+                            $("#createAccountButton").css("background-color", "black");
+
+                            // reset recaptcha
+                            grecaptcha.reset();
+                        }
+                    }
+                })
+            });
+
 
             // remove JS
             $(".script").innerHTML = "";
